@@ -161,9 +161,6 @@
       const imageWrap = document.createElement("div");
       imageWrap.className = "selected-image-wrap";
       const img = document.createElement("img");
-      const previewUrl = URL.createObjectURL(file);
-      previewUrls.push(previewUrl);
-      img.src = previewUrl;
       img.alt = `Vorschau: ${file.name}`;
       img.decoding = "async";
       img.addEventListener("error", () => {
@@ -172,7 +169,17 @@
         fallback.textContent = "Vorschau nicht verfügbar";
         img.replaceWith(fallback);
       }, { once: true });
-      imageWrap.append(img);
+      try {
+        const previewUrl = URL.createObjectURL(file);
+        previewUrls.push(previewUrl);
+        img.src = previewUrl;
+        imageWrap.append(img);
+      } catch {
+        const fallback = document.createElement("div");
+        fallback.className = "selected-no-preview";
+        fallback.textContent = "Vorschau in diesem Browser nicht verfügbar";
+        imageWrap.append(fallback);
+      }
 
       const meta = document.createElement("div");
       meta.className = "selected-photo-meta";
@@ -267,12 +274,16 @@
   }
 
   if (photoFiles) {
-    photoFiles.addEventListener("change", () => {
+    const handlePhotoSelection = () => {
       selectedFiles = Array.from(photoFiles.files || []);
       renderSelectedFiles();
-      uploadMessage.textContent = "";
+      uploadMessage.textContent = selectedFiles.length
+        ? `${selectedFiles.length} Foto(s) ausgewählt. Bitte prüft die Vorschau vor dem Hochladen.`
+        : "";
       uploadMessage.classList.remove("error");
-    });
+    };
+    photoFiles.addEventListener("change", handlePhotoSelection);
+    photoFiles.addEventListener("input", handlePhotoSelection);
   }
 
   if (clearSelectionButton) {
