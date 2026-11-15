@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf8f2">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Organisatoren – Fotogalerie Peter wird 70</title>
+  <link rel="stylesheet" href="/erinnerungen/style.css">
+</head>
+<body data-mode="admin">
+  <main class="page">
+    <header class="topbar">
+      <a href="/" class="backlink">← Zur Einladung</a>
+      <span class="eyebrow">Organisatorenbereich</span>
+    </header>
+
+    <section class="intro">
+      <p class="kicker">Geschützter Zugang</p>
+      <h1>Galerie-<br>Verwaltung</h1>
+      <p class="lead">Hier können Organisatoren alle Fotos ansehen und bei Bedarf löschen.</p>
+    </section>
+
+    <section id="login-panel" class="panel login-panel" hidden>
+      <h2>Admin-Zugang</h2>
+      <p>Bitte gebt das separate Organisatoren-Passwort ein.</p>
+      <form id="login-form">
+        <label for="password">Admin-Passwort</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button class="button" type="submit">Verwaltung öffnen →</button>
+      </form>
+      <p id="login-message" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="gallery-panel" hidden>
+      <div class="toolbar">
+        <div>
+          <h2>Alle Fotos verwalten</h2>
+          <p class="subtle">Nur Organisatoren können Bilder löschen.</p>
+        </div>
+        <button id="logout-button" class="text-button" type="button">Abmelden</button>
+      </div>
+      <div id="photo-grid" class="photo-grid" aria-live="polite"></div>
+      <p id="empty-state" class="empty-state" hidden>Noch sind keine Fotos hochgeladen worden.</p>
+    </section>
+
+    <footer class="footer-note"><a href="/erinnerungen/">Zur Gäste-Fotogalerie</a></footer>
+  </main>
+  <script src="/erinnerungen/app.js" defer></script>
+</body>
+</html>

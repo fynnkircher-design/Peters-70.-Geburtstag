@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf8f2">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Gemeinsame Fotogalerie – Peter wird 70</title>
+  <link rel="stylesheet" href="/erinnerungen/style.css?v=2">
+</head>
+<body data-mode="guest">
+  <main class="page">
+    <header class="topbar">
+      <a href="/" class="backlink">← Zur Einladung</a>
+      <span class="eyebrow">Peter wird 70</span>
+    </header>
+
+    <section class="intro">
+      <p class="kicker">Unsere Erinnerungen</p>
+      <h1>Die gemeinsame<br>Fotogalerie</h1>
+      <p class="lead">Teilt eure schönsten Momente: Hier könnt ihr Fotos hochladen, ansehen und herunterladen.</p>
+    </section>
+
+    <section id="login-panel" class="panel login-panel" hidden>
+      <h2>Willkommen!</h2>
+      <p>Bitte gebt das gemeinsame Galerie-Passwort ein.</p>
+      <form id="login-form">
+        <label for="password">Galerie-Passwort</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button class="button" type="submit">Galerie öffnen →</button>
+      </form>
+      <p id="login-message" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="gallery-panel" hidden>
+      <div class="toolbar">
+        <div>
+          <h2>Alle Fotos</h2>
+          <p class="subtle">Neueste Fotos erscheinen zuerst.</p>
+        </div>
+        <button id="logout-button" class="text-button" type="button">Abmelden</button>
+      </div>
+
+      <section class="panel upload-panel">
+        <div>
+          <h3>Ein Foto hinzufügen</h3>
+          <p>Wählt ein oder mehrere Bilder aus. Große Fotos werden vor dem Hochladen verkleinert.</p>
+        </div>
+        <form id="upload-form">
+          <label class="file-picker" for="photo-files">Fotos auswählen</label>
+          <input id="photo-files" name="photos" type="file" accept="image/*" multiple>
+          <button class="button" type="submit">Ausgewählte Fotos hochladen →</button>
+        </form>
+        <section id="selected-preview" class="selected-preview" aria-label="Ausgewählte Fotos" hidden>
+          <div class="selected-heading">
+            <strong id="selected-count">0 Fotos ausgewählt</strong>
+            <button id="clear-selection" class="text-button" type="button">Auswahl leeren</button>
+          </div>
+          <div id="selected-grid" class="selected-grid"></div>
+        </section>
+        <p id="upload-message" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <div id="photo-grid" class="photo-grid" aria-live="polite"></div>
+      <p id="empty-state" class="empty-state" hidden>Noch sind keine Fotos da. Das erste Bild könnt ihr gleich hochladen.</p>
+    </section>
+
+    <footer class="footer-note">Bitte ladet nur Bilder hoch, die ihr mit den anderen Gästen teilen möchtet.</footer>
+  </main>
+  <script src="/erinnerungen/app.js?v=2" defer></script>
+</body>
+</html>
